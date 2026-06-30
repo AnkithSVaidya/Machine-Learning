@@ -9,7 +9,6 @@ data_uci.xlsx
 MiniProject#01.pdf
 
 # Tooling and environment
-.claude/
 __pycache__/
 *.pyc
 .venv/
