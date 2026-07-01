@@ -1,82 +1,110 @@
 # Cobblestone Gifts: Online Retail Sales Review
 
-EECE 6544: Introduction to Machine Learning and Pattern Recognition, Summer 2026,
-Mini-Project #01.
+EECE 6544, Summer 2026 — Mini-Project #01.
 
-Cleaning and analysis of a raw e-commerce export for a UK-based online gift
-retailer (the public UK Online Retail dataset, about 541,909 transaction lines
-from December 2010 to December 2011). The project profiles the raw export,
-documents the cleaning decisions, builds a completed-sales dataset, and answers
-seven business questions.
+This is our cleaning and analysis of a raw e-commerce export for Cobblestone
+Gifts, a UK gift retailer (the public UK Online Retail dataset, 541,909
+transaction lines, Dec 2010 through Dec 2011). We profile the raw file, write
+down every cleaning decision and why we made it, build a completed-sales
+dataset, and use it to answer seven business questions.
 
-## What the project does
-1. Loads and profiles the raw export (correct ISO-8859-1 encoding, shape,
-   missingness, unique values, summary statistics).
-2. Cleans and fixes the data: standardises country labels, renames columns to
-   snake_case, handles missing values, and removes cancellations, non-product
-   lines (postage, bank charges, Amazon fees, adjustments), impossible prices and
-   quantities, and exact duplicate rows.
-3. Engineers features (line revenue, cleaned descriptions, a region lookup) and
-   aggregates by product, country, customer, and time.
-4. Answers seven business questions with code, numbers, short interpretations, and
-   two charts.
+## What we did
 
-All 21 required pandas techniques (3.1 to 3.21) are demonstrated and labelled by
-number in the notebook.
+We loaded the raw export with the right encoding and profiled it first:
+shape, missing values, unique counts, summary stats, the usual. From there we
+cleaned it up: standardized the country labels, renamed columns to
+snake_case, decided what to do about missing customer IDs and blank
+descriptions, and stripped out cancellations, non-product lines (postage,
+bank fees, Amazon charges, manual adjustments), impossible prices/quantities,
+and exact duplicates.
 
-## Repository contents
-| File | Description |
-|------|-------------|
-| `online_retail_cleaning.ipynb` | The cleaning and analysis notebook, with each technique labelled by number. |
-| `clean_online_retail.csv` | The exported clean completed-sales dataset. |
-| `DATA_DICTIONARY.md` | Definition of every column in the clean dataset. |
-| `FINDINGS.md` | One-page summary answering the seven business questions. |
-| `CLEANING_DECISIONS.md` | Log of the judgment calls made and the reasoning. |
-| `charts/` | Saved charts (monthly revenue trend, top non-UK markets). |
-| `requirements.txt` | Python libraries and versions needed to reproduce the work. |
+Once the data was trustworthy we engineered a few features, line revenue,
+cleaned-up descriptions, a country-to-region lookup, and aggregated by
+product, country, customer, and month. The notebook demonstrates all 21
+required pandas techniques (3.1–3.21), each one labeled so it's easy to find.
+Part 2 answers the seven business questions with code, numbers, and short
+write-ups, plus two charts.
 
-The raw input `data.csv` (about 50 MB) is not committed. Download it from Kaggle
-(see below). It is listed in `.gitignore`.
+## Repo contents
 
-## Get the dataset
-Option A, Kaggle website: open
-<https://www.kaggle.com/datasets/carrie1/ecommerce-data>, click Download, unzip,
-and place `data.csv` in the project root.
+- `online_retail_cleaning.ipynb` -> The notebook. Every technique is labeled by number.
+- `clean_online_retail.csv` —> The cleaned, completed-sales dataset.
+- `DATA_DICTIONARY.md` —> What every column in the clean dataset means.
+- `FINDINGS.md` —> The one-page writeup of the seven business questions.
+- `CLEANING_DECISIONS.md` -> The judgment calls, and why we made them.
+- `charts/` —> The monthly revenue trend and top non-UK markets charts.
+- `requirements.txt` —> What you need to run it.
 
-Option B, Kaggle API:
+`data.csv` itself (~50MB) isn't in the repo, will need to grab it from Kaggle and it'll be
+ignored by git automatically.
+
+## Getting the dataset
+
+Easiest way: go to
+<https://www.kaggle.com/datasets/carrie1/ecommerce-data>, hit Download,
+unzip, and drop `data.csv` in the project root.
+
+Or with the Kaggle CLI:
 ```bash
-pip install kaggle                       # put kaggle.json in ~/.kaggle/
+pip install kaggle                       # kaggle.json goes in ~/.kaggle/
 kaggle datasets download -d carrie1/ecommerce-data
-unzip ecommerce-data.zip                 # produces data.csv
+unzip ecommerce-data.zip
 ```
 
-The file is not UTF-8, so the notebook reads it with
-`pd.read_csv('data.csv', encoding='ISO-8859-1')` to handle the pound symbol.
+The file isn't UTF-8. The notebook reads it with
+`encoding='ISO-8859-1'`, otherwise the £ symbol throws a decode error.
 
-## How to run
+## Running it
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate                # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-jupyter notebook online_retail_cleaning.ipynb     # then Run All
+jupyter notebook online_retail_cleaning.ipynb
 ```
-Running the notebook top to bottom regenerates `clean_online_retail.csv` and the
-files in `charts/`.
+Run All from top to bottom and it'll regenerate `clean_online_retail.csv` and
+everything in `charts/` on its own.
 
-## Findings at a glance
-* Total cleaned revenue is about 10.2 million pounds for the year. Sales are
-  seasonal and peak in November 2011 at about 1.45 million pounds (about +98% over
-  a typical month) ahead of Christmas.
-* Best sellers differ by revenue against units (high-volume cheap lines against
-  higher-value items), so pricing and bundling should treat them differently.
-* The top non-UK markets are the Netherlands, Ireland, Germany, and France;
-  Western Europe is the strongest region and the natural place to expand.
-* The business is wholesale-driven: the top 1% of identified customers (about 43
-  accounts) generate about 32% of identified-customer revenue, and non-UK orders
-  (about 813 pounds) are much larger than UK orders (about 487 pounds).
-* On data quality, about one in five raw lines was removed (cancellations,
-  non-products, bad prices and quantities, duplicates), and missing customer IDs
-  (about 25%) were kept and tagged GUEST rather than discarded.
+## Findings, short version
 
-See `FINDINGS.md` for the full summary and `CLEANING_DECISIONS.md` for the
-reasoning behind every cleaning choice.
+Total cleaned revenue comes out to roughly £10.2M for the year. It's a
+seasonal business, revenue climbs through the fall and peaks in November
+2011 at about £1.45M, nearly double a typical month, right before Christmas.
+
+Best sellers split differently depending on whether you look at revenue or
+units sold, cheap items move in bulk, pricier ones don't need volume to
+earn more, so pricing and bundling decisions shouldn't treat the two lists
+the same way.
+
+Outside the UK, the Netherlands, Ireland, Germany, and France are the biggest
+markets, and Western Europe overall is where we'd point any expansion effort.
+
+This is a wholesale-driven business. The top 1% of identified customers
+(43 accounts) bring in about 32% of identified-customer revenue, and non-UK
+orders average £813 versus £487 for UK orders, bigger, less frequent
+purchases, consistent with wholesale buying.
+
+On data quality: we removed about 3.6% of raw rows (cancellations,
+non-product lines, bad prices/quantities, duplicates), leaving 522,504 clean
+rows. About a quarter of those still have no customer ID, we kept them and
+tagged them `GUEST` instead of throwing away real revenue.
+
+Full writeup is in `FINDINGS.md`; the reasoning behind every cleaning call is
+in `CLEANING_DECISIONS.md`.
+
+## Known limitations
+
+A few small things came up during review that we're flagging rather than
+quietly patching, since none of them change the conclusions above:
+
+- Our `region_map` doesn't include Hong Kong, so those rows end up bucketed
+  as `Other` instead of `APAC`.
+- About 442 rows have no `country` value. They're counted in totals pulled
+  straight from `revenue` (like the £10.2M figure above), but pandas drops
+  missing group keys by default, so they quietly disappear from any
+  `groupby('country')` or `groupby('region')` table. That's about £4,700,
+  roughly 0.05% of total revenue — small, but it means the country/region
+  breakdowns won't add up exactly to the headline number.
+- The cleaning ledger shows `blank_description: 0`. That's correct, not a
+  mistake, those rows had already been caught by the non-product filter
+  by the time we checked for blanks.
