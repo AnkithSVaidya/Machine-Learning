@@ -31,7 +31,8 @@ Netherlands leads non-UK revenue at ~£284K, then Ireland (~£271K), Germany
 region level and Western Europe dominates at ~£774K. Those four countries
 already buy at scale and sit close enough for reasonable shipping, they're
 the obvious first stop if the company wants to grow internationally.
-(`charts/top_markets.png`)
+<img width="1080" height="540" alt="image" src="https://github.com/user-attachments/assets/6abd066b-f8f5-40fb-881b-2a990e16da54" />
+
 
 ## Customer concentration
 
