@@ -12,6 +12,8 @@ double a typical month, right in line with pre-Christmas wholesale
 restocking. December looks weak in the chart, but that's just because the
 export cuts off on the 9th, not a real drop-off. Whoever's planning Q4 stock
 and cash flow should expect that spike. 
+<img width="1080" height="540" alt="image" src="https://github.com/user-attachments/assets/084507b1-307b-4387-96a7-9e12b841c2bc" />
+
 
 ## Best sellers
 
