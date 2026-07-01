@@ -67,9 +67,9 @@ everything in `charts/` on its own.
 
 ## Findings, short version
 
-Total cleaned revenue comes out to roughly £10.2M for the year. It's a
+Total cleaned revenue comes out to roughly £9.7M for the year. It's a
 seasonal business, revenue climbs through the fall and peaks in November
-2011 at about £1.45M, nearly double a typical month, right before Christmas.
+2011 at about £1.43M, nearly double a typical month, right before Christmas.
 
 Best sellers split differently depending on whether you look at revenue or
 units sold, cheap items move in bulk, pricier ones don't need volume to
@@ -80,8 +80,8 @@ Outside the UK, the Netherlands, Ireland, Germany, and France are the biggest
 markets, and Western Europe overall is where we'd point any expansion effort.
 
 This is a wholesale-driven business. The top 1% of identified customers
-(43 accounts) bring in about 32% of identified-customer revenue, and non-UK
-orders average £813 versus £487 for UK orders, bigger, less frequent
+(43 accounts) bring in about 30% of identified-customer revenue, and non-UK
+orders average £791 versus £461 for UK orders, bigger, less frequent
 purchases, consistent with wholesale buying.
 
 On data quality: we removed about 3.6% of raw rows (cancellations,
@@ -100,7 +100,7 @@ quietly patching, since none of them change the conclusions above:
 - Our `region_map` doesn't include Hong Kong, so those rows end up bucketed
   as `Other` instead of `APAC`.
 - About 442 rows have no `country` value. They're counted in totals pulled
-  straight from `revenue` (like the £10.2M figure above), but pandas drops
+  straight from `revenue` (like the £9.7M figure above), but pandas drops
   missing group keys by default, so they quietly disappear from any
   `groupby('country')` or `groupby('region')` table. That's about £4,700,
   roughly 0.05% of total revenue — small, but it means the country/region

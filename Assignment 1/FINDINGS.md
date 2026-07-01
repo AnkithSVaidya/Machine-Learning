@@ -6,8 +6,8 @@ sales with a known customer ID; the rest are tagged `GUEST`.
 
 ## Seasonality
 
-We looked at roughly £10.2M in total revenue for the year. Trading builds
-through the autumn and peaks hard in November 2011, about £1.45M, nearly
+We looked at roughly £9.67M in total revenue for the year. Trading builds
+through the autumn and peaks hard in November 2011, about £1.43M, more than
 double a typical month, right in line with pre-Christmas wholesale
 restocking. December looks weak in the chart, but that's just because the
 export cuts off on the 9th, not a real drop-off. Whoever's planning Q4 stock
@@ -28,8 +28,8 @@ treating every top-10 product the same.
 
 ## Markets
 
-Netherlands leads non-UK revenue at ~£284K, then Ireland (~£271K), Germany
-(~£205K), and France (~£184K), with Australia not far behind. Zoom out to
+Netherlands leads non-UK revenue at ~£283K, then Ireland (~£258K), Germany
+(~£191K), and France (~£181K), with Australia not far behind. Zoom out to
 region level and Western Europe dominates at ~£774K. Those four countries
 already buy at scale and sit close enough for reasonable shipping, they're
 the obvious first stop if the company wants to grow internationally.
@@ -40,14 +40,14 @@ the obvious first stop if the company wants to grow internationally.
 
 This lookss like a wholesale business more than a retail one. The top 1% of
 identified customers, about 43 accounts out of roughly 4,300, bring in
-close to a third of identified-customer revenue (32%), and the single
+close to a third of identified-customer revenue (30%), and the single
 biggest account alone is worth about £279K. When a handful of accounts carry
 that much weight, retention matters more than acquisition.
 
 ## Order value
 
-Average order sits around £518, but that hides a real split: non-UK orders
-average £813 against £487 for UK orders. Makes sense, international buyers
+Average order sits around £492, but that hides a real split: non-UK orders
+average £791 against £461 for UK orders. Makes sense, international buyers
 are more likely to be wholesalers consolidating into fewer, bigger orders to
 make the shipping worthwhile. Another point in favor of leaning into the
 international wholesale side of the business.
