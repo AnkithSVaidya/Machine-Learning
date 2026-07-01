@@ -1,63 +1,77 @@
-# Findings Summary: Cobblestone Gifts Sales Review (Dec 2010 to Dec 2011)
+# Findings: Cobblestone Gifts Sales Review (Dec 2010–Dec 2011)
 
-Based on the clean completed-sales dataset (522,504 lines, about 10.2 million
-pounds in revenue). All figures are in pounds (GBP). Customer-level figures cover
-the roughly 75% of sales that have a known customer ID.
+Based on the clean completed-sales dataset, 522,504 lines, ~£10.2M in
+revenue with all figures in GBP. Anything customer-level only covers the ~75% of
+sales with a known customer ID; the rest are tagged `GUEST`.
 
-### 1. Seasonality
-Total revenue is about 10.2 million pounds. Sales rise steadily through the autumn
-and peak in November 2011 at about 1.45 million pounds, which is roughly double a
-typical month (about +98%) and matches the pre-Christmas wholesale restocking
-period. December 2011 looks low only because the export ends on 9 December. Stock
-and cash should be planned for a large fourth-quarter peak.
-See `charts/monthly_revenue.png`.
+## Seasonality
 
-### 2. Best sellers
-The top-10-by-revenue and top-10-by-units lists overlap only partly. The
-high-unit sellers are cheap, high-volume items such as Paper Craft Little Birdie,
-Medium Ceramic Top Storage Jar, and Jumbo Bag Red Retrospot. The top-revenue list
-also includes higher-priced items such as the Regency Cakestand 3 Tier and Party
-Bunting. Revenue therefore comes from a mix of volume lines and value lines, which
-should be priced and bundled differently.
+We looked at roughly £10.2M in total revenue for the year. Trading builds
+through the autumn and peaks hard in November 2011, about £1.45M, nearly
+double a typical month, right in line with pre-Christmas wholesale
+restocking. December looks weak in the chart, but that's just because the
+export cuts off on the 9th, not a real drop-off. Whoever's planning Q4 stock
+and cash flow should expect that spike. 
 
-### 3. Markets
-Outside the UK, the most valuable countries by revenue are the Netherlands (about
-284,000 pounds), Ireland (about 271,000 pounds), Germany (about 205,000 pounds),
-and France (about 184,000 pounds), followed by Australia. By region, Western Europe
-is the strongest (about 774,000 pounds). These are the natural targets for
-expansion because they already buy at scale and are close for shipping.
-See `charts/top_markets.png`.
+## Best sellers
 
-### 4. Customer concentration
-The top 1% of identified customers (about 43 of roughly 4,300 accounts) account for
-about 32% of identified-customer revenue, and the single largest account spends
-about 279,000 pounds. This is typical of a wholesale business in which a small set
-of large buyers dominates, so retaining the key accounts matters more than chasing
-many small ones.
+Revenue and unitvolume tell different stories here. By units, it's cheap
+stuff moving in bulk, Paper Craft Little Birdie, the Medium Ceramic Top
+Storage Jar, Jumbo Bag Red Retrospot. By revenue, pricier items like the
+Regency Cakestand 3 Tier and Party Bunting climb the list without needing
+anywhere near the same volume. So there isn't one "best seller" story, it's
+a mix of high-volume/low-margin lines and lower-volume/higher-value ones, and
+pricing or bundling decisions should account for that split rather than
+treating every top-10 product the same.
 
-### 5. Order value
-The average order is worth about 518 pounds. Non-UK orders (about 813 pounds) are
-considerably larger than UK orders (about 487 pounds). Overseas buyers tend to be
-wholesalers who order in bigger batches to spread shipping costs, which again
-supports focusing on international wholesale accounts.
+## Markets
 
-### 6. Returns and cancellations
-Cancellation and return lines are a small share of the total line count but a
-larger share of value, and they are concentrated in a handful of products and a few
-large wholesale accounts where big bulk orders were reversed. These accounts are
-worth monitoring, but they do not change the overall revenue picture.
+Netherlands leads non-UK revenue at ~£284K, then Ireland (~£271K), Germany
+(~£205K), and France (~£184K), with Australia not far behind. Zoom out to
+region level and Western Europe dominates at ~£774K. Those four countries
+already buy at scale and sit close enough for reasonable shipping, they're
+the obvious first stop if the company wants to grow internationally.
+(`charts/top_markets.png`)
 
-### 7. Data-quality memo
-About one in five raw lines was removed: cancellations, non-product and service
-codes (postage, bank charges, Amazon fees, and manual adjustments), non-positive
-quantities and prices, blank descriptions, and exact duplicates. Missing customer
-IDs (about 25%) were repaired by setting them to GUEST rather than discarding
-genuine sales. The assumptions were that a 5-digit code identifies a real product,
-that zero or negative quantity and price lines are not valid sales, and that GUEST
-rows are real revenue that cannot be attributed to a named customer.
+## Customer concentration
 
-Would I trust this for a board report? Yes for the revenue, product, market, and
-seasonality questions, because those rest on the cleaned completed-sales lines and
-are stable. One caveat: the customer-level metrics (Q3 and Q4) cover only the
-roughly 75% of sales with a known ID, so they should be read as indicative of the
-identified-customer base rather than the whole book.
+This lookss like a wholesale business more than a retail one. The top 1% of
+identified customers, about 43 accounts out of roughly 4,300, bring in
+close to a third of identified-customer revenue (32%), and the single
+biggest account alone is worth about £279K. When a handful of accounts carry
+that much weight, retention matters more than acquisition.
+
+## Order value
+
+Average order sits around £518, but that hides a real split: non-UK orders
+average £813 against £487 for UK orders. Makes sense, international buyers
+are more likely to be wholesalers consolidating into fewer, bigger orders to
+make the shipping worthwhile. Another point in favor of leaning into the
+international wholesale side of the business.
+
+## Returns and cancellations
+
+Cancelled/returned lines are a small slice of the total row count but punch
+above their weight in value, and they cluster around a handful of products
+and a few large wholesale accounts, the kind of pattern you'd expect from
+big orders getting walked back rather than widespread dissatisfaction. Worth
+keeping an eye on those accounts, but it doesn't move the overall revenue
+picture much.
+
+## Data-quality memo
+
+We remove 3.6% of raw rows, cancellations, non-product/service codes
+(postage, bank charges, Amazon fees, manual adjustments), non-positive
+quantities and prices, and exact duplicates. Missing customer IDs (about 25%
+of what's left) weren't dropped, we tagged them `GUEST` so real revenue
+didn't just disappear from the totals. A few assumptions are baked into
+this: a 5-digit code means a real product, zero or negative quantity/price
+isn't a valid sale, and `GUEST` rows are genuine revenue that just can't be
+tied to a name.
+
+Would this hold up in a board report? For revenue, product, market, and
+seasonality, yes, those all come straight from the cleaned completed-sales
+data and don't wobble. The one caveat is the customer-level numbers (sections
+3 and 4): they only reflect the ~75% of sales we can actually attribute to a
+customer, so treat them as representative of the identified base, not the
+entire book.
