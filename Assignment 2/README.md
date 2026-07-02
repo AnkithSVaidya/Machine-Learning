@@ -1,6 +1,6 @@
 # Telco Monthly Charge Prediction
 
-EECE 6544: Introduction to Machine Learning and Pattern Recognition — Assignment #02
+EECE 6544: Assignment #02
 
 ## What this project does
 
