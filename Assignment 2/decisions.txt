@@ -1,0 +1,5 @@
+Cleaning Decisions Log
+
+- Chose to use 10 predictors (PhoneService, MultipleLines, OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport,
+StreamingTV, StreamingMovies, InternetService_Fiber optic, InternetService_No) and remove the others
+- Ensured that all predictors were binary and had no NaN's 
