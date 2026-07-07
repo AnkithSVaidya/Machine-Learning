@@ -1,5 +1,29 @@
 Cleaning Decisions Log
 
+Data Preparation & Feature Selection:
 - Chose to use 10 predictors (PhoneService, MultipleLines, OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport,
-StreamingTV, StreamingMovies, InternetService_Fiber optic, InternetService_No) and remove the others
-- Ensured that all predictors were binary and had no NaN's 
+StreamingTV, StreamingMovies, InternetService_Fiber optic, InternetService_No) and removed the others (PaperlessBilling, Churn,
+TotalCharges, gender, SeniorCitizen, Partner, Dependents, tenure, Contract_One year, Contract_Two year, and payment methods).
+The 10 selected services directly represent the add-on offerings mentioned in the business question, while demographic and
+billing fields don't directly impact monthly charge prediction for service pricing.
+
+- Ensured that all 10 predictors were binary (0/1) indicators with no NaN values. Verified this by checking isin([0,1]).all()
+for each column, confirming data integrity.
+
+- Kept the 'target' column as the dependent variable (monthly charges in USD). The data was already properly encoded with
+one-hot encoding for categorical features (InternetService, Contract type), which was appropriate for the modeling task.
+
+Model & Split Decisions:
+- Used an 80/20 train/test split with random_state=42 to ensure reproducibility and allow others to verify results.
+
+- Chose linear regression over other methods because the assignment specifically requires a multivariable linear regression,
+and the high R² (0.999) indicates the linear assumption is valid for this problem.
+
+- Tested a baseline single-variable model using service count (sum of 10 services per customer) to demonstrate that knowing
+which services matters far more than just how many. The baseline performed poorly (R² 0.701, MAE $14.24) vs the full model
+(R² 0.999, MAE $0.79), validating the multivariable approach.
+
+Data Quality Observations:
+- No missing values detected in any of the 10 service columns or the target variable.
+- Target variable ranges from $18.25 to $118.75, representing realistic monthly charges.
+- Service adoption varies significantly across the dataset, providing good coverage for model training.

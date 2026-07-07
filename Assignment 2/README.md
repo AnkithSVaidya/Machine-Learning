@@ -25,13 +25,24 @@ eight business questions the assignment poses.
 | `requirements.txt` | Python packages needed to run the notebook. |
 | `charts/` | The exported coefficient bar chart and predicted-vs-actual scatter plot. |
 
+## How to get the data
+
+The telco dataset is originally from the [Kaggle Telco Customer Churn dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn).
+To reproduce this project:
+
+1. Download `WA_Fn-UseC_-Telco-Customer-Churn.csv` from Kaggle
+2. Rename it to `telco.csv`
+3. Place it in the same directory as `assignment_2.ipynb`
+
+Alternatively, `telco.csv` is already included in this repository, so you can skip these steps and run directly.
+
 ## How to run
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate       # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-jupyter notebook telco_regression.ipynb
+jupyter notebook assignment_2.ipynb
 ```
 
 Run all cells top to bottom. `telco.csv` must be in the same folder as the
