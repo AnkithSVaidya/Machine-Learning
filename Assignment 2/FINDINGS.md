@@ -41,9 +41,9 @@ multivariable model reaches **R² ≈ 0.999** and **MAE ≈ $0.79**, while a bas
 model using only the count of add-ons reaches **R² ≈ 0.70** and **MAE ≈ $14.24**
 on the identical test split. Two customers with the same add-on count can carry
 very different bills (a cheap add-on vs. fiber internet), so the count alone
-badly under-explains price.
+badly under-explains price. This clearly shown from the residuals.
+![Coefficients](charts/residuals.png)
 
-![Predicted vs actual](charts/predicted_vs_actual.png)
 
 ## 7. Prediction accuracy on unseen customers
 Well within a few dollars — test-set **MAE ≈ $0.79**, **RMSE ≈ $1.05**. The
