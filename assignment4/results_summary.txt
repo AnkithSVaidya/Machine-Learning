@@ -1,0 +1,22 @@
+Best hyperparameters: {'criterion': 'gini', 'max_depth': 7, 'min_samples_leaf': 5}
+Best CV accuracy: 0.8302
+Test accuracy: 0.7933
+
+Classification report:
+              precision    recall  f1-score   support
+
+        Died       0.80      0.88      0.84       110
+    Survived       0.78      0.65      0.71        69
+
+    accuracy                           0.79       179
+   macro avg       0.79      0.77      0.77       179
+weighted avg       0.79      0.79      0.79       179
+
+Feature importances:
+Sex         0.488400
+Pclass      0.169887
+Fare        0.167839
+Age         0.131760
+Embarked    0.034411
+SibSp       0.006651
+Parch       0.001052
