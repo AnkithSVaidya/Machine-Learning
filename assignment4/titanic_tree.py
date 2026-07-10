@@ -82,7 +82,7 @@ print("Feature importance plot saved.")
 
 # Save results summary to text
 with open(f'results_summary_{CRITERION}.txt', 'w') as f:
-    f.write(f"Criterion: {CRITERION}")
+    f.write(f"Criterion: {CRITERION}\n")
     f.write(f"Best hyperparameters for: {grid.best_params_}\n")
     f.write(f"Best CV accuracy: {grid.best_score_:.4f}\n")
     f.write(f"Test accuracy: {test_acc:.4f}\n\n")

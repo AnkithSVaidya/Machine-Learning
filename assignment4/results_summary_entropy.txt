@@ -1,4 +1,5 @@
-Criterion: entropyBest hyperparameters for: {'criterion': 'entropy', 'max_depth': 10, 'min_samples_leaf': 5}
+Criterion: entropy
+Best hyperparameters for: {'criterion': 'entropy', 'max_depth': 10, 'min_samples_leaf': 5}
 Best CV accuracy: 0.8302
 Test accuracy: 0.7709
 
