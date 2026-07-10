@@ -1,0 +1,22 @@
+Criterion: entropyBest hyperparameters for: {'criterion': 'entropy', 'max_depth': 10, 'min_samples_leaf': 5}
+Best CV accuracy: 0.8302
+Test accuracy: 0.7709
+
+Classification report:
+              precision    recall  f1-score   support
+
+        Died       0.79      0.85      0.82       110
+    Survived       0.73      0.64      0.68        69
+
+    accuracy                           0.77       179
+   macro avg       0.76      0.75      0.75       179
+weighted avg       0.77      0.77      0.77       179
+
+Feature importances:
+Sex         0.390129
+Fare        0.231168
+Pclass      0.187146
+Age         0.143155
+Embarked    0.029513
+Parch       0.013566
+SibSp       0.005322
