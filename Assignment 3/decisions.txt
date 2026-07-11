@@ -1,0 +1,9 @@
+Cleaning Decisions Log
+
+Data Preparation & Feature Selection:
+- The following variables were deemed valuable: 
+['Make', 'Model', 'Year', 'Kilometer', 'Fuel Type', 'Transmission', 'Location', 'Color', 'Owner', 'Engine', 'Length', 'Width', 'Height', 'Seating Capacity', 'Fuel Tank Capacity']
+
+- Linear regression was chosen due to the current state of the course. In the future, other algorithms may perform better.
+
+- Linear regression was performed on the logarithm of the cost due to outliers.
