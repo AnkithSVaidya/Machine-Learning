@@ -1,0 +1,16 @@
+# HealthGuard Insurance - MiniProject #02
+# Developed and tested on Python 3.14 (any Python >= 3.10 should work)
+
+numpy==2.4.2
+pandas==3.0.1
+matplotlib==3.10.8
+seaborn==0.13.2
+scikit-learn==1.8.0
+
+# Notebook execution
+jupyter-core==5.8.1
+nbformat==5.10.4
+nbconvert==7.16.6
+nbclient==0.10.2
+ipykernel==7.1.0
+notebook
