@@ -1,22 +1,22 @@
-# HealthGuard Insurance — Medical Charges Analysis & Pricing Models
+# HealthGuard Insurance: Medical Charges Analysis and Pricing Models
 
-**EECE 6544: Introduction to Machine Learning and Pattern Recognition · Summer 2026 · MiniProject #02**
+EECE 6544: Introduction to Machine Learning and Pattern Recognition, Summer 2026, MiniProject #02
 
 ## What this project does
 
-HealthGuard Insurance prices its plans with outdated actuarial tables — underpricing high-risk customers (losses) and overpricing low-risk ones (churn). Acting as the junior data-science team for the Head of Pricing (Ms. Sarah Nabil), this project uses 1,338 historical customer records (age, sex, BMI, children, smoking status, region, annual medical charges) to deliver three things:
+HealthGuard Insurance prices its plans with outdated actuarial tables, which means it underprices high risk customers and overprices low risk ones. Working as the junior data science team for the Head of Pricing (Ms. Sarah Nabil), we used 1,338 historical customer records (age, sex, BMI, children, smoking status, region, and annual medical charges) to deliver three things:
 
-1. **EDA — "Understand our customers first":** cleaned data, 7 board-ready visualizations, and a plain-language summary of what drives medical costs.
-2. **Regression — "Predict the medical charges":** seven model families (Simple/Multiple Linear, Polynomial 2–4, Ridge, Lasso, SVR with two kernels, Decision Tree), tuned with 5-fold cross-validation and compared on MAE, MSE, RMSE, and R² on a held-out test set.
-3. **Classification — "Flag the expensive customers":** a binary flag for customers whose annual charges exceed the median ($9,386), built with seven classifiers and compared on accuracy, precision, recall, F1, and ROC-AUC.
+1. **EDA ("Understand our customers first"):** a cleaned dataset, seven visualizations, and a plain language summary of what drives medical costs.
+2. **Regression ("Predict the medical charges"):** seven model families (Simple and Multiple Linear, Polynomial degrees 2 to 4, Ridge, Lasso, SVR with two kernels, Decision Tree), tuned with 5-fold cross validation and compared on MAE, MSE, RMSE and R2 on a held-out test set.
+3. **Classification ("Flag the expensive customers"):** a binary flag for customers whose annual charges exceed the median ($9,386), built with seven classifiers and compared on accuracy, precision, recall, F1 and ROC-AUC.
 
-Everything lives in one reproducible notebook: [`HealthGuard_Insurance_Analysis.ipynb`](HealthGuard_Insurance_Analysis.ipynb). The full workflow write-up is in [`TECHNICAL_REPORT.md`](TECHNICAL_REPORT.md).
+All of the work is in one reproducible notebook, [HealthGuard_Insurance_Analysis.ipynb](HealthGuard_Insurance_Analysis.ipynb). The full write-up is in [TECHNICAL_REPORT.md](TECHNICAL_REPORT.md).
 
 ## Repository layout
 
 ```
-├── HealthGuard_Insurance_Analysis.ipynb   # the complete analysis (cleaning → EDA → models → recommendation)
-├── TECHNICAL_REPORT.md                    # full technical report and stakeholder recommendation
+├── HealthGuard_Insurance_Analysis.ipynb   # the complete analysis (cleaning, EDA, models, recommendation)
+├── TECHNICAL_REPORT.md                    # technical report and stakeholder recommendation
 ├── README.md                              # this file
 ├── requirements.txt                       # pinned Python dependencies
 ├── data/
@@ -27,23 +27,23 @@ Everything lives in one reproducible notebook: [`HealthGuard_Insurance_Analysis.
 
 ## How to download the dataset from Kaggle
 
-The data is the public **Medical Cost Personal Datasets** on Kaggle: <https://www.kaggle.com/datasets/mirichoi0218/insurance>
+The data is the public Medical Cost Personal Datasets on Kaggle: <https://www.kaggle.com/datasets/mirichoi0218/insurance>
 
-**Option A — browser (simplest):**
-1. Open the link above (a free Kaggle account is required) and click **Download**.
-2. Unzip and place `insurance.csv` in the `data/` folder of this repository.
+Option A, in the browser (simplest):
+1. Open the link above (a free Kaggle account is required) and click Download.
+2. Unzip it and place `insurance.csv` in the `data/` folder of this repository.
 
-**Option B — Kaggle CLI:**
+Option B, with the Kaggle CLI:
 ```bash
 pip install kaggle                      # then place your API token in ~/.kaggle/kaggle.json
 kaggle datasets download -d mirichoi0218/insurance -p data --unzip
 ```
 
-A copy of `insurance.csv` (≈55 KB, public domain) is also included in `data/` so the notebook runs out of the box.
+A copy of `insurance.csv` (about 55 KB, public domain) is already included in `data/` so the notebook runs out of the box.
 
 ## How to run the notebook
 
-Requires **Python 3.11+** (developed on 3.14; pandas 3.x needs ≥ 3.11).
+Requires Python 3.11 or newer (developed on 3.14; pandas 3.x needs at least 3.11).
 
 ```bash
 # 1. Clone
@@ -57,23 +57,23 @@ pip install -r requirements.txt
 
 # 3. Run end to end (either open it...)
 jupyter notebook HealthGuard_Insurance_Analysis.ipynb
-# ...or execute headless:
+# ...or execute it headless:
 jupyter nbconvert --to notebook --execute --inplace HealthGuard_Insurance_Analysis.ipynb
 ```
 
-The notebook is deterministic (`random_state = 42` everywhere): running it regenerates `data/insurance_clean.csv`, every chart in `charts/`, and identical model scores.
+The notebook is deterministic (`random_state = 42` everywhere). Running it regenerates `data/insurance_clean.csv`, every chart in `charts/`, and the same model scores.
 
 ## Summary of findings
 
-- **Smoking dominates everything.** Smokers (20% of customers) average **$32,050**/year vs **$8,441** for non-smokers — a 3.8× gap and a 0.79 correlation with charges. Age adds a steady ~$250–280 per year; everything else is second-order.
-- **Risk multiplies — the surprising pattern.** BMI barely matters for non-smokers, but **obese smokers average $41,693** (~4.7× obese non-smokers). Any additive pricing table misprices this segment.
-- **Best charge predictor: a depth-4 Decision Tree** — R² = 0.897, RMSE ≈ $4,346, typical error ≈ $2,600 — and it reads as a human-interpretable pricing rulebook (first split: *do you smoke?*). Polynomial (degree 2) is the close runner-up (R² = 0.883); degrees 3–4 demonstrably overfit.
-- **Best expensive-customer flag: Random Forest** — 93.7% accuracy, F1 = 0.935, catching 91% of expensive customers on the held-out test set.
-- **Recommendation to the stakeholder:** deploy the Decision Tree for premium estimation and the Random Forest for expensive-customer triage; retrain on HealthGuard's own book as it grows. Details and limitations in [`TECHNICAL_REPORT.md`](TECHNICAL_REPORT.md).
+- **Smoking dominates everything else.** Smokers (about 20% of customers) average $32,050 per year against $8,441 for non-smokers, a 3.8x gap and a 0.79 correlation with charges. Age adds roughly $250 to $280 per year. Everything else is second order.
+- **The surprising pattern: risk multiplies.** BMI barely matters for non-smokers, but obese smokers average $41,693, about 4.7 times obese non-smokers. An additive pricing table misprices this segment.
+- **Best charge predictor: a depth 4 Decision Tree** (R2 of 0.897, RMSE around $4,346, typical error around $2,600). It also reads as a plain set of pricing rules, starting with "does the customer smoke". The degree 2 polynomial is a close runner-up (R2 of 0.883), and degrees 3 and 4 visibly overfit.
+- **Best expensive-customer flag: Random Forest** (93.7% accuracy, F1 of 0.935), catching 91% of expensive customers on the held-out test set.
+- **Recommendation to the stakeholder:** use the decision tree for premium estimation and the random forest for the expensive flag, and retrain both on HealthGuard's own book as it grows. Details and limitations are in [TECHNICAL_REPORT.md](TECHNICAL_REPORT.md).
 
-| Regression (test set) | MAE | RMSE | R² |
+| Regression (test set) | MAE | RMSE | R2 |
 |---|---|---|---|
-| **Decision Tree (depth 4)** | **$2,621** | **$4,346** | **0.897** |
+| Decision Tree (depth 4) | $2,621 | $4,346 | 0.897 |
 | Polynomial (degree 2) | $2,867 | $4,646 | 0.883 |
 | SVR (RBF kernel) | $2,541 | $4,692 | 0.880 |
 | Multiple Linear | $4,177 | $5,956 | 0.807 |
